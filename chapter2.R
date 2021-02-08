@@ -86,4 +86,40 @@ x_fit <- sarima(x, p=2, d=0, q=0)
 # standardized residuals
 # sample ACF or residuals
 # normal Q-Q plot
-# Q-statistic 
+# Q-statistic p-value (blue line)
+
+# Bad residuals
+# Pattern in the residuals
+# ACF has large values
+
+# QQ plot suggests normality
+# Q-statistic - all points below line
+
+# 
+# Fit an MA(1) to dl_varve.   
+sarima(dl_varve, p=0, d=0, q=1)
+
+# Fit an MA(2) to dl_varve. Improvement?
+sarima(dl_varve, p=0, d=0, q=2)
+
+# Fit an ARMA(1,1) to dl_varve. Improvement?
+sarima(dl_varve, p=1, d=0, q=1)
+
+# sarima run includes a residual analysis
+# 
+
+
+# Calculate approximate oil returns
+oil_returns <- diff(log(oil))
+
+# Plot oil_returns. Notice the outliers.
+plot(oil_returns)
+
+# Plot the P/ACF pair for oil_returns
+acf2(oil_returns)
+
+# Assuming both P/ACF are tailing, fit a model to oil_returns
+sarima(oil_returns, p=1, d=0, q=1)
+
+
+# 
